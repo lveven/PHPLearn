@@ -6,8 +6,9 @@
             "name": "Listen for XDebug",
             "type": "php",
             "request": "launch",
-            "serverSourceRoot": "/home/vagrant/Code",
-            "localSourceRoot": "~/Documents/php_workspace/php7",
+            "serverSourceRoot": "/home/vagrant/Code/PHPLearn/test",
+            "localSourceRoot": "${workspaceRoot}/PHPLearn",
+            "log":false,
             "port": 9000
         },
         {
@@ -16,8 +17,8 @@
             "request": "launch",
             "program": "${file}",
             "cwd": "${fileDirname}",
-            "serverSourceRoot": "/home/vagrant/Code",
-            "localSourceRoot": "~/Documents/php_workspace/php7",
+            "serverSourceRoot": "/home/vagrant/Code/PHPLearn/test",
+            "localSourceRoot": "${workspaceRoot}/PHPLearn",
             "port": 9000
         }
     ]
