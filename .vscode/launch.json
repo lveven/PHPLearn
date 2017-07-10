@@ -17,8 +17,6 @@
             "request": "launch",
             "program": "${file}",
             "cwd": "${fileDirname}",
-            "serverSourceRoot": "/home/vagrant/Code/PHPLearn/test",
-            "localSourceRoot": "${workspaceRoot}/PHPLearn",
             "port": 9000
         }
     ]
