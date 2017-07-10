@@ -26,6 +26,8 @@
 
 连接数据库 账号密码 `homestead/secret` 端口是33060（MySQL）
 
+虚拟机 账号密码 `vagrant/vagrant`
+
 增加更多网站
 
 一旦 Homestead 环境配置完毕且成功运行后，你可能会想要为 Laravel 应用程序增加更多的 Nginx 网站。你可以在单个 Homestead 环境中运行多个 Laravel 程序。要添加额外的网站，只需将网站添加到您的 Homestead.yaml 文件中：

@@ -14,7 +14,7 @@ function verifyImage($type=1,$length=4,$pixel=0,$line=0,$sess_name = "verify"){
 	$chars = buildRandomString ( $type, $length );
 	$_SESSION [$sess_name] = $chars;
 	//$fontfiles = array ("MSYH.TTF", "MSYHBD.TTF", "SIMLI.TTF", "SIMSUN.TTC", "SIMYOU.TTF", "STZHONGS.TTF" );
-	$fontfiles = array ("SIMYOU.TTF" );
+	$fontfiles = array ("ChalkboardSE.ttc" );
 	//由于字体文件比较大，就只保留一个字体，如果有需要的同学可以自己添加字体，字体在你的电脑中的fonts文件夹里有，直接运行输入fonts就能看到相应字体
 	for($i = 0; $i < $length; $i ++) {
 		$size = mt_rand ( 14, 18 );
