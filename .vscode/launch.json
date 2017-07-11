@@ -6,7 +6,7 @@
             "name": "Listen for XDebug",
             "type": "php",
             "request": "launch",
-            "serverSourceRoot": "/home/vagrant/Code/PHPLearn/test",
+            "serverSourceRoot": "/home/vagrant/Code/PHPLearn/api",
             "localSourceRoot": "${workspaceRoot}/PHPLearn",
             "log":false,
             "port": 9000

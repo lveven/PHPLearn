@@ -65,15 +65,9 @@ for($i = 0; $i < 4; $i ++) {
 // }
 
 //浏览器中输出格式设置
-// content-type:image/gif
-// header('Content-Type: image/png;charset=utf-8');
-// header('content-type:text/html;charset=utf-8');
 header('content-type:image/png');
 //图片输出格式设置
 // imagepng($image,'./bg.png');
-// imagegif($image,'./bg.gif');
-// imagegif($image);
-
 imagepng($image);
 
 //销毁资源
