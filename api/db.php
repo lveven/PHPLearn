@@ -4,11 +4,11 @@
  */
 class Db{
     private $_dbConfig = array(
-        'host' => 'localhost',
+        'host' => 'localhost11',
         'user' => 'homestead',
         'password' => 'secret',
         'port' => '33060',
-        'database' => 'video'
+        'database' => 'homestead'
     );
 
     static private $_link;
@@ -27,9 +27,9 @@ class Db{
         if(!self::$_link){
             self::$_link = mysqli_connect($this->_dbConfig['host'],$this->_dbConfig['user'],$this->_dbConfig['password']);
             if(!self::$_link){
-                die('mysql connect error. errorno:' . mysqli_connect_errno() . 'errorinfo:'.mysqli_connect_error());
+                throw new Exception('mysql connect error. errorno:' . mysqli_connect_errno() . 'errorinfo:'.mysqli_connect_error());
+                //die('mysql connect error. errorno:' . mysqli_connect_errno() . 'errorinfo:'.mysqli_connect_error());
             }
-
             mysqli_select_db(self::$_link,$this->_dbConfig['database']);
             $sql = 'SET NAMES UTF8';
             mysqli_query(self::$_link,$sql);
@@ -37,9 +37,9 @@ class Db{
         return self::$_link;
     }
 }
-$db = Db::getInstance();
-$connect = $db->connect();
-$sql = "select * from video";
-$result = mysqli_query($connect,$sql);
-var_dump($result);
+// $db = Db::getInstance();
+// $connect = $db->connect();
+// $sql = "select * from video";
+// $result = mysqli_query($connect,$sql);
+// var_dump($result);
 ?>
