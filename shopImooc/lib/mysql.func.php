@@ -9,6 +9,7 @@ function connect(){
 	mysqli_set_charset($link,DB_CHARSET); 
 	mysqli_select_db($link,DB_DBNAME) or die("指定数据库打开失败");
 	echo "数据库连接成功";
+	$GLOBALS['link'] = $link;
 	return $link;
 }
 
@@ -19,6 +20,7 @@ function connect(){
  * @return number
  */
 function insert($table,$array){
+	$link = $GLOBALS['link'];
 	$keys=join(",",array_keys($array));
 	$vals="'".join("','",array_values($array))."'";
 	$sql="insert {$table}($keys) values({$vals})";
