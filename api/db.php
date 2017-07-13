@@ -4,7 +4,7 @@
  */
 class Db{
     private $_dbConfig = array(
-        'host' => 'localhost11',
+        'host' => 'localhost',
         'user' => 'homestead',
         'password' => 'secret',
         'port' => '33060',
