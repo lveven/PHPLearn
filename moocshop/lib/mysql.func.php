@@ -1,4 +1,5 @@
 <?php
+require_once('../include.php');
 /**
  * 连接数据库
  *  
@@ -9,6 +10,7 @@ function connect(){
     mysqli_set_charset($link,DB_CHARSET);
     mysqli_select_db($link,DB_DBNAME) or die('指定数据库打开失败');
     echo '数据库连接成功';
+    $GLOBALS['link'] = $link;
     return $link;
 }
 /**
@@ -76,6 +78,7 @@ function delete($table,$where=null){
 function fetchOne($sql,$result_type = MYSQLI_ASSOC){
     $link = $GLOBALS['link'];
     $result = mysqli_query($link,$sql);
+    var_dump($result);
     $row = mysqli_fetch_array($result,$result_type);
     return $row;
 }
@@ -87,10 +90,10 @@ function fetchOne($sql,$result_type = MYSQLI_ASSOC){
  * @param [string] $result_type
  * @return void
  */
-function fetchAll($table,$result_type = MYSQLI_ASSOC){
+function fetchAll($sql,$result_type = MYSQLI_ASSOC){
     $link = $GLOBALS['link'];
     $result = mysqli_query($link,$sql);
-    while(@$row-mysqli_fetch_array($result,$result_type)){
+    while(@$row=mysqli_fetch_array($result,$result_type)){
         $rows[]=$row;
     }
     return $rows;
@@ -117,4 +120,13 @@ function getInsertId(){
     $link = $GLOBALS['link'];
     return mysqli_insert_id($link);
 }
+
+$link = connect();
+// select
+// $sql = "SELECT * FROM video";
+// $sql = "SELECT * FROM `video`";
+$sql = "select * from video";
+// $result = fetchOne($sql);
+$result = fetchAll($sql);
+var_dump($result);
 ?>
