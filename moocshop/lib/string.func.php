@@ -1,8 +1,6 @@
 <?php
 
 function buildRandomString($type=1,$length=4) {
-    $type = 1;
-    $length = 4;
     if($type == 1){
         $chars = join("",range(0,9));
     } elseif($type == 2){
@@ -16,5 +14,3 @@ function buildRandomString($type=1,$length=4) {
     $chars = str_shuffle($chars);
     return substr($chars,0,$length);
 }
-
-?>
