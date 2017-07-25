@@ -78,7 +78,7 @@ function delete($table,$where=null){
 function fetchOne($sql,$result_type = MYSQLI_ASSOC){
     $link = $GLOBALS['link'];
     $result = mysqli_query($link,$sql);
-    var_dump($result);
+    // var_dump($result);
     $row = mysqli_fetch_array($result,$result_type);
     return $row;
 }
@@ -121,12 +121,11 @@ function getInsertId(){
     return mysqli_insert_id($link);
 }
 
-$link = connect();
+// $link = connect();
 // select
 // $sql = "SELECT * FROM video";
 // $sql = "SELECT * FROM `video`";
-$sql = "select * from video";
+// $sql = "select * from video";
 // $result = fetchOne($sql);
-$result = fetchAll($sql);
-var_dump($result);
-?>
+// $result = fetchAll($sql);
+// var_dump($result);

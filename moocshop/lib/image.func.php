@@ -1,8 +1,9 @@
 <?php
-require_once './string.func.php';
+require_once 'string.func.php';
 // echo phpinfo();
 function verifyImage($type=1,$length=4,$pixel=0,$line=0,$sess_name="verify"){
     //通过GD库做验证码
+    // session_start();
     //创建画布
     $width = 80;
     $height = 28;
@@ -13,7 +14,7 @@ function verifyImage($type=1,$length=4,$pixel=0,$line=0,$sess_name="verify"){
     //创建填充矩形
     imagefilledrectangle($image,0,0,$width,$height,$whiteColor);
 
-    $chars = buildRandomString(3,4);
+    $chars = buildRandomString($type,$length);
     $_SESSION [$sess_name] = $chars;
     $fontfiles = array ("ChalkboardSE.ttc" );
     for($i = 0; $i < 4; $i ++) {
@@ -51,4 +52,4 @@ function verifyImage($type=1,$length=4,$pixel=0,$line=0,$sess_name="verify"){
     imagedestroy($image);
 }
 
-verifyImage(2,5,30,4);
+// verifyImage(2,5,30,4);
