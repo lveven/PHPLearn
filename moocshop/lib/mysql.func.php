@@ -9,7 +9,6 @@ function connect(){
     $link = mysqli_connect(DB_HOST,DB_USER,DB_PWD) or die('数据库连接失败'.mysqli_connect_error());
     mysqli_set_charset($link,DB_CHARSET);
     mysqli_select_db($link,DB_DBNAME) or die('指定数据库打开失败');
-    echo '数据库连接成功';
     $GLOBALS['link'] = $link;
     return $link;
 }
@@ -76,7 +75,9 @@ function delete($table,$where=null){
  * @return void
  */
 function fetchOne($sql,$result_type = MYSQLI_ASSOC){
-    $link = $GLOBALS['link'];
+   $link = $GLOBALS['link'];
+//    $link = connect();
+//    var_dump($link);
     $result = mysqli_query($link,$sql);
     // var_dump($result);
     $row = mysqli_fetch_array($result,$result_type);
@@ -121,7 +122,7 @@ function getInsertId(){
     return mysqli_insert_id($link);
 }
 
-// $link = connect();
+$link = connect();
 // select
 // $sql = "SELECT * FROM video";
 // $sql = "SELECT * FROM `video`";

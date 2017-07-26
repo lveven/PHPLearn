@@ -4,6 +4,11 @@
 -- ------------------------------------------------------
 -- Server version	5.5.20
 
+use homestead;
+select * from `imooc_admin`;
+
+INSERT INTO `imooc_admin` VALUES (7,'leoliu','7d5417e3a96d8c9e54ef8e7f608d9e85','1033805687@qq.com');
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
