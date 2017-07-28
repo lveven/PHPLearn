@@ -48,10 +48,65 @@ function logout(){
  */
 function addAdmin(){
     $arr = $_POST;
+    $arr["password"]=md5($arr["password"]);
     $sqlManager = new MySqlManager();
+    var_dump($arr);
     if($sqlManager->insert('imooc_admin',$arr)){
         $msg = "添加成功!<br/><a href='addAdmin.php'>继续添加</a> | <a href='listAdmin.php'>查看管理员列表</a>";
     }else {
         $msg = "添加失败!<br/><a href='addAdmin.php'>重新添加</a>";
     }
+    return $msg;
+}
+
+function getAllAdmin(){
+    $sql = "select id,username,email from imooc_admin";
+    $sqlManager = new MySqlManager();
+    $rows = $sqlManager->fetchAll($sql);
+    return $rows;
+}
+
+function editAdmin($id){
+    $arr = $_POST;
+    $arr['password']=md5($arr['password']);
+    $sqlManager = new MySqlManager(); 
+    if($sqlManager->update("imooc_admin",$arr,"id={$id}")){
+           $msg = "编辑成功!<br/><a href='listAdmin.php'>查看管理员列表</a>";
+    } else {
+       $msg = "编辑失败!<br/><a href='listAdmin.php'>请重新修改</a>";
+    }
+    return $msg;
+}
+/**
+ * 删除管理员
+ *
+ * @param [string] $id
+ * @return void
+ */
+function delAdmin($id){
+    $sqlManager = new MySqlManager(); 
+    if($sqlManager->delete("imooc_admin","id={$id}")){
+       $msg = "删除成功!<br/><a href='listAdmin.php'>查看管理员列表</a>";
+    } else {
+       $msg = "删除失败!<br/><a href='listAdmin.php'>请重新删除</a>";
+    }
+    return $msg;
+}
+
+function getAdminByPage($pageSize=2){
+    $page=isset($_REQUEST['page'])?(int)$_REQUEST['page']:1;
+    $sqlManager = new MySqlManager();
+    $sql="select * from imooc_admin";
+    $totalRows=$sqlManager->getResultNum($sql);
+    global $totalPage;
+    $totalPage=ceil($totalRows/$pageSize);
+    $page=isset($_REQUEST['page'])?(int)$_REQUEST['page']:1;
+    if($page<1||$page==null||!is_numeric($page)){
+        $page=1;
+    }
+    if($page>=$totalPage)$page=$totalPage;
+    $offset=($page-1)*$pageSize;
+    $sql="select id,username,email from imooc_admin limit {$offset},{$pageSize}";
+    $rows= $sqlManager->fetchAll($sql);
+    return $rows;
 }

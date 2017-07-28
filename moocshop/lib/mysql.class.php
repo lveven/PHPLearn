@@ -27,7 +27,7 @@ class MySqlManager{
     function insert($table,$array){
         $link = $this->link;
         $keys = join(',',array_keys($array));
-        $values = "'".join(',',array_values($array))."'";
+        $values = "'".join('\',\'',array_values($array))."'";
         $sql = "insert into {$table} ({$keys}) values({$values})";
         mysqli_query($link,$sql);
         return mysqli_insert_id($link);
@@ -42,13 +42,14 @@ class MySqlManager{
      */
     function update($table,$array,$where=null){
         $link = $this->link;
+        $str = null;
         foreach($array as $key=>$val){
             if($str==null){
                 $sep="";
             }else{
                 $sep=",";
             }
-            $str.=$sep.$key."=".$val."'";
+            $str.=$sep.$key."="."'".$val."'";
         }
         $sql = "update {$table} set {$str} ".($where==null?null:" where ".$where);
         $result = mysqli_query($link,$sql);
@@ -68,7 +69,7 @@ class MySqlManager{
     function delete($table,$where=null){
         $link = $this->link;
         $where = $where == null ? null: 'where '.$where;
-        $sql = 'delete from {$table} {$where}';
+        $sql = "delete from {$table} {$where}";
         mysqli_query($link,$sql);
         return mysqli_affected_rows($link);
     }

@@ -1,24 +1,22 @@
 <?php 
 require_once '../include.php';
-$pageSize=2;
-$page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
-$rows=getAdminByPage($page,$pageSize);
-//$sql="select * from imooc_admin";
-//$totalRows=getResultNum($sql);
-//$pageSize=2;
-//$totalPage=ceil($totalRows/$pageSize);
-//$pageSize=2;
-//$page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
-//if($page<1||$page==null||!is_numeric($page)){
-//	$page=1;
-//}
-//if($page>=$totalPage)$page=$totalPage;
-//$offset=($page-1)*$pageSize;
-//$sql="select id,username,email from imooc_admin limit {$offset},{$pageSize}";
-//$rows=fetchAll($sql);
+$pageSize = 2;
+// $rows=getAdminByPage($pageSize);
 
-//$rows=getAllAdmin();
-
+$page=isset($_REQUEST['page'])?(int)$_REQUEST['page']:1;
+$sqlManager = new MySqlManager();
+$sql="select * from imooc_admin";
+$totalRows=$sqlManager->getResultNum($sql);
+global $totalPage;
+$totalPage=ceil($totalRows/$pageSize);
+$page=isset($_REQUEST['page'])?(int)$_REQUEST['page']:1;
+if($page<1||$page==null||!is_numeric($page)){
+    $page=1;
+}
+if($page>=$totalPage)$page=$totalPage;
+$offset=($page-1)*$pageSize;
+$sql="select id,username,email from imooc_admin limit {$offset},{$pageSize}";
+$rows= $sqlManager->fetchAll($sql); 
 if(!$rows){
 	alertMes("sorry,没有管理员,请添加!","addAdmin.php");
 	exit;
@@ -60,7 +58,7 @@ if(!$rows){
                                 <td align="center"><input type="button" value="修改" class="btn" onclick="editAdmin(<?php echo $row['id'];?>)"><input type="button" value="删除" class="btn"  onclick="delAdmin(<?php echo $row['id'];?>)"></td>
                             </tr>
                             <?php endforeach;?>
-                            <?php if($totalRows>$pageSize):?>
+                            <?php if($rows>$pageSize):?>
                             <tr>
                             	<td colspan="4"><?php echo showPage($page, $totalPage);?></td>
                             </tr>
