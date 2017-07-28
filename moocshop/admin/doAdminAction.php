@@ -2,7 +2,7 @@
 require_once '../include.php';
 checkLogined();
 $act=$_REQUEST['act'];
-$id=$_REQUEST['id'];
+$id=isset($_REQUEST['id']);
 if($act=="logout"){
 	logout();
 }elseif($act=="addAdmin"){

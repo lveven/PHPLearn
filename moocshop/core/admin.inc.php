@@ -50,7 +50,6 @@ function addAdmin(){
     $arr = $_POST;
     $arr["password"]=md5($arr["password"]);
     $sqlManager = new MySqlManager();
-    var_dump($arr);
     if($sqlManager->insert('imooc_admin',$arr)){
         $msg = "添加成功!<br/><a href='addAdmin.php'>继续添加</a> | <a href='listAdmin.php'>查看管理员列表</a>";
     }else {
