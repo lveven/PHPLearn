@@ -58,8 +58,9 @@ function addAdmin(){
     return $msg;
 }
 
-function getAllAdmin(){
-    $sql = "select id,username,email from imooc_admin";
+function getAllAdmin($where=null){
+     
+    $sql = "select id,username,email from imooc_admin {$where}";
     $sqlManager = new MySqlManager();
     $rows = $sqlManager->fetchAll($sql);
     return $rows;
@@ -79,7 +80,7 @@ function editAdmin($id){
 /**
  * 删除管理员
  *
- * @param [string] $id
+ * @param [type] $id
  * @return void
  */
 function delAdmin($id){
@@ -90,22 +91,4 @@ function delAdmin($id){
        $msg = "删除失败!<br/><a href='listAdmin.php'>请重新删除</a>";
     }
     return $msg;
-}
-
-function getAdminByPage($pageSize=2){
-    $page=isset($_REQUEST['page'])?(int)$_REQUEST['page']:1;
-    $sqlManager = new MySqlManager();
-    $sql="select * from imooc_admin";
-    $totalRows=$sqlManager->getResultNum($sql);
-    global $totalPage;
-    $totalPage=ceil($totalRows/$pageSize);
-    $page=isset($_REQUEST['page'])?(int)$_REQUEST['page']:1;
-    if($page<1||$page==null||!is_numeric($page)){
-        $page=1;
-    }
-    if($page>=$totalPage)$page=$totalPage;
-    $offset=($page-1)*$pageSize;
-    $sql="select id,username,email from imooc_admin limit {$offset},{$pageSize}";
-    $rows= $sqlManager->fetchAll($sql);
-    return $rows;
 }
