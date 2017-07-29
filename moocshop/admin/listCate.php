@@ -1,15 +1,16 @@
 <?php 
 require_once '../include.php';
-$page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
+$page=isset($_REQUEST['page'])?(int)$_REQUEST['page']:1;
 $sql="select * from imooc_cate";
-$totalRows=getResultNum($sql);
+$sqlManager = new MySqlManager();
+$totalRows=$sqlManager->getResultNum($sql);
 $pageSize=2;
 $totalPage=ceil($totalRows/$pageSize);
 if($page<1||$page==null||!is_numeric($page))$page=1;
 if($page>=$totalPage)$page=$totalPage;
 $offset=($page-1)*$pageSize;
 $sql="select id,cName from imooc_cate  order by id asc limit {$offset},{$pageSize}";
-$rows=fetchAll($sql);
+$rows=$sqlManager->fetchAll($sql);
 if(!$rows){
 	alertMes("sorry,没有分类,请添加!","addCate.php");
 	exit;

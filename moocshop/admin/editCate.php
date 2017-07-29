@@ -1,6 +1,6 @@
 <?php 
 require_once '../include.php';
-$id=$_REQUEST['id'];
+$id=isset($_REQUEST['id'])?$_REQUEST['id']:-1;
 $row=getCateById($id);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

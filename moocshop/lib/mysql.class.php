@@ -29,8 +29,8 @@ class MySqlManager{
         $keys = join(',',array_keys($array));
         $values = "'".join('\',\'',array_values($array))."'";
         $sql = "insert into {$table} ({$keys}) values({$values})";
-        mysqli_query($link,$sql);
-        return mysqli_insert_id($link);
+        $result = mysqli_query($link,$sql);
+        return $result ? mysqli_insert_id($link): false;
     }
     /**
      * 数据库更新操作
@@ -70,7 +70,7 @@ class MySqlManager{
         $link = $this->link;
         $where = $where == null ? null: 'where '.$where;
         $sql = "delete from {$table} {$where}";
-        mysqli_query($link,$sql);
+        $result = mysqli_query($link,$sql);
         return mysqli_affected_rows($link);
     }
     /**
@@ -82,10 +82,7 @@ class MySqlManager{
      */
     function fetchOne($sql,$result_type = MYSQLI_ASSOC){
         $link = $this->link;
-    //    $link = connect();
-    //    var_dump($link);
         $result = mysqli_query($link,$sql);
-        // var_dump($result);
         $row = mysqli_fetch_array($result,$result_type);
         return $row;
     }
