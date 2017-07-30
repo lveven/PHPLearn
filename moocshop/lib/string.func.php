@@ -19,4 +19,21 @@ function buildRandomString($type=1,$length=4){
 	$chars = str_shuffle ( $chars );
 	return substr ( $chars, 0, $length );
 }
+/**
+ * 生成唯一字符串
+ *
+ * @return [String]
+ */
+function getUniName(){
+	return md5(uniqid(microtime(true),true));
+}
 
+/**
+ * 获取文件扩展名
+ *
+ * @param [String] $filename
+ * @return [String]
+ */
+function getExt($filename){
+	return strtolower(end(explode('.',$filename)));
+}
