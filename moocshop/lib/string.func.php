@@ -35,5 +35,6 @@ function getUniName(){
  * @return [String]
  */
 function getExt($filename){
-	return strtolower(end(explode('.',$filename)));
+	$arr = explode('.',$filename);
+	return strtolower(end($arr));
 }
