@@ -22,16 +22,16 @@ function buildInfo(){
 
 function uploadFile($path = "uploads",$allowUploadExt = array('jpeg','jpg','png','gif','wbmp'),$maxSize = 1048576,$imageFlag = true){
     if(!file_exists($path)){
-        mkdir($path,0777,TRUE);
+        mkdir($path,0777,true);
     }
-    $i=0;
     $fileInfos = buildInfo();
-    foreach($fileInfos as $fileInfo){
+    $i = 0;
+    foreach($fileInfos as $fielInfo){
         $filename = $fileInfo['name'];
-        $tmpname = $fileInfo['tmp_name'];
+        $tmpName = $fileInfo['tmp_name'];
         $error = $fileInfo['error'];
         $size = $fileInfo['size'];
-        if($error === UPLOAD_ERR_OK){
+        if($error == UPLOAD_ERR_OK){
             $ext = getExt($filename);
             //限制上传文件类型
             if(!in_array($ext,$allowUploadExt)){
@@ -42,25 +42,26 @@ function uploadFile($path = "uploads",$allowUploadExt = array('jpeg','jpg','png'
             }
             if($imageFlag){
                 //验证图片是否是真正的图片类型
-                $info = getimagesize($tmpname);
+                $info = getimagesize($tmpName);
+                // var_dump($info);exit;
                 if(!$info){
                     exit('不是真正的图片类型');
                 }
             }
             // 判断文件是否是通过HTTP POST 方式上传的
-            if(!is_uploaded_file($tmpname)){
-                exit('文件不是通过HTTP POST 上传上来的');
+            if(!is_uploaded_file($tmpName)){
+                exit("文件不是通过HTTP POST 上传上来的");
             }
             $filename = getUniName().".".$ext;
             $destination = $path."/".$filename;
-            if(move_uploaded_file($tmpname,$destination)){
+            if(move_uploaded_file($tmpName,$destination)){
                     $msg = "文件移动成功";
                     $fileInfo['name']=$filename;
                     unset($fileInfo['error'],$fileInfo['tmp_name']);
                     $uploadedFiles[$i]=$fileInfo;
                     $i++;
             }
-        }else{
+        } else {
             switch($error){
                 case UPLOAD_ERR_INI_SIZE:
                 // 其值为 1，上传的文件超过了 php.ini 中 upload_max_filesize 选项限制的值。
@@ -91,9 +92,8 @@ function uploadFile($path = "uploads",$allowUploadExt = array('jpeg','jpg','png'
                 break;
                 default:
                 $msg = "未知错误";
-            }
-            echo $msg;
         }
+        echo $msg;
     }
     return $uploadedFiles;
 }
