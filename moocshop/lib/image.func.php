@@ -71,7 +71,6 @@ function verifyImage($type=1,$length=4,$pixel=0,$line=0,$sess_name="verify"){
  * @return string 返回文件名
  */
 function thumb($filename,$destination=null,$dst_w=null,$dst_h=null,$isReverseSource=false,$scale=0.5){
-    $src_image = imagecreatefromjpeg($filename);
     list($src_w,$src_h,$imagetype) = getimagesize($filename);
     if(is_null($dst_w) || is_null($dst_h)){
         $dst_w = ceil($src_w*$scale);

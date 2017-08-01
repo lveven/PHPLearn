@@ -16,9 +16,9 @@ if(!$rows){
 <script type="text/javascript" charset="utf-8" src="../plugins/kindeditor/lang/zh_CN.js"></script>
 <script type="text/javascript" src="./scripts/jquery-1.6.4.js"></script>
 <script>
-        KindEditor.ready(function(K) {
-                window.editor = K.create('#editor_id');
-        });
+        // KindEditor.ready(function(K) {
+        //         window.editor = K.create('#editor_id');
+        // });
         $(document).ready(function(){
         	$("#selectFileBtn").click(function(){
         		$fileField = $('<input type="file" name="thumbs[]"/>');
@@ -53,8 +53,8 @@ if(!$rows){
 		<td>
 		<select name="cId">
 			<?php foreach($rows as $row):?>
-				<option value="<?php echo $row['id'];?>"><?php echo $row['cName'];?></option>
-			<?php endforeach;?>
+				<option value="<?php echo $row['id']; ?>"><?php echo $row['cName']; ?></option>
+			<?php endforeach; ?>
 		</select>
 		</td>
 	</tr>

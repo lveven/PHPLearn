@@ -113,6 +113,15 @@ class MySqlManager{
         $result = mysqli_query($link,$sql);
         return mysqli_num_rows($result);
     }
+    /**
+     * 得到上一步记录插入id
+     *
+     * @return string
+     */
+    function getInsertId(){
+         $link = $this->link;
+        return mysqli_insert_id($link);
+    }
 
     function __destruct(){
         mysqli_close($this->link);

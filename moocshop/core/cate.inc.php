@@ -42,3 +42,11 @@ function delCate($where)
     }
     return $msg;
 }
+
+function getAllCate()
+{
+    $sqlManager = new MySqlManager();
+    $sql = "select id,cName from imooc_cate";
+    $rows = $sqlManager->fetchAll($sql);
+    return $rows; 
+}
