@@ -18,7 +18,7 @@ class Response {
             'data' => $data
         );
 
-        $type = isset($_GET["format"]) ? $_GET["format"] : JSON;
+        $type = isset($_GET["format"]) ? $_GET["format"] : self::JSON;
         if($type == 'json'){
             self::json($code,$data);
             exit;
