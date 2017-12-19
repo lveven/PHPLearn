@@ -23,4 +23,4 @@ if(isset($c)){
     echo '\'0\''.' is not set<br>';
 }
 
-phpinfo();
+// phpinfo();
