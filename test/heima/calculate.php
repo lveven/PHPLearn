@@ -34,10 +34,20 @@
             break;
         }
     } else {
+        $op = '+';
         $data1 = '';
         $data2 = '';
         $result = '';
     }
+    // var_dump($GLOBALS);
+    echo "<table>";
+    foreach($GLOBALS as $key => $value){
+        echo "<tr>";
+        echo "<td>$key</td>";
+        echo "<td>$value</td>";
+        echo "</tr>";
+    }
+    echo "</table>"
 ?>
 <!--当action为空字符串的时候，是提交到本页面！
 	表单中的所有数据，要想提交，都必须有name
