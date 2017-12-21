@@ -86,3 +86,40 @@ echo "<br>绝对路径引入:";
 $root = $_SERVER["DOCUMENT_ROOT"];
 echo $root."/PHPLearn/test/heima/page1.php<br>";
 include $root."/PHPLearn/test/heima/page1.php";
+
+//不显示错误
+ini_set("display_errors",0);
+echo $abc;
+
+ini_set("error_reporting",E_NOTICE | E_WARNING);//显示2个级别的错误
+
+//记录错误日志
+ini_set("log_erros",1); 
+
+ini_set("error_log","abc.txt");
+
+//记录到系统日志中
+ini_set("error_log","syslog");
+
+set_error_handler("my_error_handler");
+
+/**
+ * 错误处理
+ *
+ * @param [int] $errorCode  错误码
+ * @param [type] $errMsg    错误信息
+ * @param [type] $errFile   发生错误的文件名
+ * @param [type] $errLine   发生错误的行号
+ * @return void
+ */
+function my_error_handler($errorCode,$errMsg,$errFile,$errLine)
+{
+    echo "<h1><font color='red'>大事不好发生错误</font></h1>";
+    echo "<br/>错误号：".$errorCode;
+    echo "<br/>错误信息：".$errMsg;
+    echo "<br/>错误文件：".$errFile;
+    echo "<br/>错误行号：".$errLine;
+    echo "<br/>错误发生时间：".date("Y-d-m H:i:s");
+}
+
+echo $bcd;
