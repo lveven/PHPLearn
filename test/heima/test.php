@@ -71,3 +71,18 @@ $v2 = 300;
 echo $v2;
 settype($v2,"string");
 echo "类型转化:".$v2;
+
+
+echo "<br>";
+echo "相对路径引入:<br>";
+include "./page1.php"; 
+
+echo "<br>绝对路径引入:";
+echo __DIR__."/page1.php<br>";
+include __DIR__."/page1.php";
+
+
+echo "<br>绝对路径引入:";
+$root = $_SERVER["DOCUMENT_ROOT"];
+echo $root."/PHPLearn/test/heima/page1.php<br>";
+include $root."/PHPLearn/test/heima/page1.php";
