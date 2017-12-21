@@ -1,5 +1,5 @@
 <?php
-$t1 = microtime(true);
+$t1 = microtime(true);//获取当前时间
 for($i = 0; $i < 10000000; ++$i){
 
 }
