@@ -1,0 +1,42 @@
+create table tb_suoyin(
+    id int auto_increment,
+    user_name varchar(20),
+    age int,
+    email varchar(50),
+    primary key(id),/*主键索引*/
+    key(email),/*普通索引*/
+    unique key(user_name)/*唯一索引*/
+);
+
+create table banji(
+    id int auto_increment primary key,
+    banjinhao varchar(10) unique key comment '班级号',
+    banzhuren varchar(10) not null comment '班主任',
+    open_date date comment '开班日期'
+);
+
+create table xuesheng(
+    stu_id int auto_increment primary key,
+    name varchar(10),
+    age tinyint,
+    banji_id int comment '班级id',
+    foreign key (banji_id) references banji(id)
+);
+
+create table lianxi(
+    id int auto_increment primary key,
+    f1 float,
+    c1 char,
+    c2 varchar(10),
+    dt datetime,
+    d  date,
+    t  text,
+    sex enum('male','female'),
+    fav set('play basketball','play football'),
+    key(c2)
+)
+charset = utf8,
+engine = InnoDB
+;
+alter table lianxi add age int default 18;
+alter table lianxi change c1 
