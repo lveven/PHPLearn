@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <table border="1">
+            <?php
+            foreach($data1 as $key => $rec)
+            {
+                ?>
+                <tr>
+                    <td><?php echo $rec['user_name']; ?></td>
+                    <td><?php echo $rec['age']; ?></td>
+                    <td><?php echo $rec['edu']; ?></td>
+                    <td><?php echo $rec['xingqu']; ?></td>
+                    <td><?php echo $rec['fromwhere']; ?></td>
+                    <td><?php echo $rec['reg_time']; ?></td>
+                    <td><a href='?id=6' onclick='return queren()'>删除</a></td>
+                </tr>
+                <?php
+            }
+            ?>
+    </table>
+当前用户总数：<?php echo $data2 ?>
+</body>
+</html>
