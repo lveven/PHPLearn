@@ -21,7 +21,7 @@
                     <td><?php echo $rec['xingqu']; ?></td>
                     <td><?php echo $rec['fromwhere']; ?></td>
                     <td><?php echo $rec['reg_time']; ?></td>
-                    <td><a href='?id=6' onclick='return queren()'>删除</a></td>
+                    <td><a href='?act=del&id=<?php echo $rec['id'];?>' onclick='return enter()'>删除</a></td>
                 </tr>
                 <?php
             }
@@ -30,3 +30,8 @@
 当前用户总数：<?php echo $data2 ?>
 </body>
 </html>
+<script>
+    function enter(){
+        return window.confirm('确认删除吗?');
+    }
+</script>

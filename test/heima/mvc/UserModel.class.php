@@ -1,34 +1,21 @@
 <?php
-require_once './MySQLService.class.php';
-class UserModel{
-    // private $config = array(
-    //     'host' => '47.94.18.56',
-    //     'port' => 3306,
-    //     'user' => 'root',
-    //     'passwd'=> 'root',
-    //     'dbname'=> 'hm',
-    //     'charset'=> 'utf8'
-    // );
-
-    private $config = array(
-        'host' => '192.168.10.10',
-        'port' => 3306,
-        'user' => 'homestead',
-        'passwd'=> 'secret',
-        'dbname'=> 'homestead',
-        'charset'=> 'utf8'
-    );
+require_once './BaseModel.class.php';
+class UserModel extends BaseModel{
     function getAllUser(){
-        $sql = "select * from usertable;";
-        $db = MySQLService::shareInstance($this->config);
-        $data = $db->getRows($sql);
+        $sql = "select * from usertable";
+        $data = $this->db->getRows($sql);
         return $data;
     }
 
     function getUserCount(){
-        $sql = "select count(*) as c from usertable;";
-        $db = MySQLService::shareInstance($this->config);
-        $data = $db->getOneData($sql);
+        $sql = "select count(*) as c from usertable";
+        $data = $this->db->getOneData($sql);
 		return $data;
+    }
+
+    function delUserById($id){
+        $sql = "delete from usertable where id = {$id}";
+        $data = $this->db->exec($sql);
+        return $data;
     }
 }
