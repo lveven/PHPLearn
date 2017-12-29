@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <form name="form1" action="?act=addUser" method="post">
+            <h1>添加数据</h1>
+            用户名：<input type="text" name="user_name"><br/>
+            <!-- 密码:<input type="password" name="password"><br/> -->
+            年龄：<input type="text" name="age"><br/>
+            学历：<select name="edu">
+               <option value="小学">小学</option>
+               <option value="中学">中学</option>
+               <option value="大学">大学</option>
+               <option value="硕士">硕士</option>
+               <option value="博士">博士</option>
+            </select><br/>
+            兴趣爱好：
+            <input type="checkbox" name="aihao[]" value="吹牛" >吹牛
+            <input type="checkbox" name="aihao[]" value="篮球">篮球
+            <input type="checkbox" name="aihao[]" value="足球">足球
+            <input type="checkbox" name="aihao[]" value="弹琴">弹琴
+            <input type="checkbox" name="aihao[]" value="打扑克">打扑克<br/>
+       
+            来自：<input type="radio" name='from' value="东北">东北
+            <input type="radio" name='from' value="华北">华北
+           <input type="radio" name='from' value="西北">西北
+           <input type="radio" name='from' value="华东">华东
+           <input type="radio" name='from' value="华北">华北
+           <input type="radio" name='from' value="华西">华西<br/>
+       
+           <input type="submit" value="提交" >
+    </form>
+</body>
+</html>
