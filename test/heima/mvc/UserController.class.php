@@ -1,7 +1,7 @@
 <?php
-require_once './UserModel.class.php';
-require_once './ModelFactory.class.php';
-require_once './BaseController.class.php';
+// require_once './UserModel.class.php';
+// require_once './ModelFactory.class.php';
+// require_once './BaseController.class.php';
 
 class UserController extends BaseController{
     private $obj = null;
@@ -70,7 +70,7 @@ class UserController extends BaseController{
     }
 }
 
-$controller = new UserController();
-$act = !empty($_GET['a']) ? $_GET['a'] : "index";
-$action = $act."Action";
-$controller->$action();//可变函数调用
+// $controller = new UserController();
+// $act = !empty($_GET['a']) ? $_GET['a'] : "index";
+// $action = $act."Action";
+// $controller->$action();//可变函数调用

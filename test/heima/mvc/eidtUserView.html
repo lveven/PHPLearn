@@ -9,7 +9,7 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <form name="form1" action="?a=updateUser" method="post">
+    <form name="form1" action="?c=User&a=updateUser" method="post">
             <h1>添加数据</h1>
             <!-- 将当前要修改的用户ID存储在一个隐藏input中，以便修改后提交表单的时候一并返回给服务器 -->
             <input type='hidden' name="id" value='<?php echo $_GET['id']?>'>
