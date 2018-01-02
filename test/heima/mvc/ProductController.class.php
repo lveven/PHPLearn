@@ -1,7 +1,8 @@
 <?php
 require "./ProductModel.class.php";
 require "./ModelFactory.class.php";
-class ProductController{
+require_once './BaseController.class.php';
+class ProductController extends BaseController{
     private $obj = null;
     function __construct(){
         $this->obj = ModelFactory::M('ProductModel');
@@ -20,6 +21,6 @@ class ProductController{
 }
 
 $controller = new ProductController();
-$act = !empty($_GET['act']) ? $_GET['act'] : "index";
+$act = !empty($_GET['a']) ? $_GET['a'] : "index";
 $action = $act."Action";
 $controller->$action();//可变函数调用

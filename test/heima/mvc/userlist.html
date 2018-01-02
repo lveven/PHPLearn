@@ -9,10 +9,10 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <a href='ProductController.class.php?act=showAllProduct'>产品列表</a>
+    <a href='ProductController.class.php?a=showAllProduct'>产品列表</a>
     <a href='UserController.class.php'>用户列表</a>
     <hr>
-    <a href='?act=showForm'>添加新用户</a>用户列表：
+    <a href='?a=showForm'>添加新用户</a>用户列表：
     <table border="1">
             <?php
             foreach($data1 as $key => $rec)
@@ -26,9 +26,9 @@
                     <td><?php echo $rec['fromwhere']; ?></td>
                     <td><?php echo $rec['reg_time']; ?></td>
                     <td>
-                        <a href='?act=del&id=<?php echo $rec['id'];?>' onclick='return enter()'>删除</a>
-                        <a href='?act=detail&id=<?php echo $rec['id'];?>'> 详情 </a>
-                        <a href='?act=edit&id=<?php echo $rec['id'];?>'> 修改 </a>
+                        <a href='?a=del&id=<?php echo $rec['id'];?>' onclick='return enter()'>删除</a>
+                        <a href='?a=detail&id=<?php echo $rec['id'];?>'> 详情 </a>
+                        <a href='?a=edit&id=<?php echo $rec['id'];?>'> 修改 </a>
                     </td>
                 </tr>
                 <?php
