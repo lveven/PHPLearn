@@ -1,5 +1,5 @@
 <?php
-require_once './Framework/BaseModel.class.php';
+require_once FRAMEWORK .'BaseModel.class.php';
 class UserModel extends BaseModel{
     function getAllUser(){
         $sql = "select * from usertable";

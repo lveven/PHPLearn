@@ -1,5 +1,5 @@
 <?php
-require_once './Framework/MySQLService.class.php';
+require_once FRAMEWORK.'MySQLService.class.php';
 class BaseModel{
     protected $db = null;
     function __construct(){
