@@ -17,6 +17,9 @@ class ProductController extends BaseController{
     }
     function delAction(){ 
         echo "".__FUNCTION__;
+        $id = $_GET['id']; 
+        $result = $this->obj->delProductById($id);
+        $this->gotoUrl('删除成功','?c=Product&a=showAllProduct',1);
     }
 }
 
