@@ -13,11 +13,11 @@ class UserController extends BaseController{
     function detailAction(){
         $id = $_GET['id'];
         $data = $this->obj->getUserInfoById($id);
-        include './UserInfo.html';
+        include './Views/UserInfo.html';
     }
 
     function showFormAction(){
-        include './addUserView.html';
+        include './Views/addUserView.html';
     }
 
     function addUserAction(){
@@ -45,14 +45,14 @@ class UserController extends BaseController{
         $data1 = $this->obj->getAllUser();
         $data2 = $this->obj->getUserCount(); 
         //载入视图文件以显示2份数据
-        include './userlist.html';
+        include './Views/userlist.html';
     }
 
     function editAction(){
         $id = $_GET['id'];
         $user = $this->obj->getUserInfoById($id);
         $aihao = explode(",",$user['xingqu']);
-        include './eidtUserView.html';
+        include './Views/eidtUserView.html';
     }
 
     function updateUserAction(){

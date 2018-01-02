@@ -10,7 +10,7 @@ class ProductController extends BaseController{
     function showAllProductAction(){
         // echo "".__FUNCTION__;
         $data1 = $this->obj->getAllProduct();
-        include './productlist.html';
+        include './Views/productlist.html';
     }
     function detailAction(){
         echo "".__FUNCTION__;

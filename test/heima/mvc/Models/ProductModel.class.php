@@ -1,5 +1,5 @@
 <?php
-require_once './BaseModel.class.php';
+require_once './Framework/BaseModel.class.php';
 class ProductModel extends BaseModel{
     function getAllProduct(){
         $sql = "SELECT p.*,t.protype_name FROM product AS p INNER JOIN product_type AS t ON p.protype_id = t.protype_id";
