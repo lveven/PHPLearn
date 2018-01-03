@@ -40,3 +40,18 @@ UPDATE product SET protype_id=2 where pro_id = 4;
 SELECT * FROM product AS p INNER JOIN product_type AS t ON p.protype_id = t.protype_id;
 
 SELECT p.*,t.protype_name FROM product AS p INNER JOIN product_type AS t ON p.protype_id = t.protype_id;
+
+use homestead;
+CREATE TABLE admin_user(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	admin_name VARCHAR(20) UNIQUE KEY,
+	admin_pass VARCHAR(48) NOT NULL,
+	login_times INT COMMENT '登录次数',
+	last_login_time DATETIME COMMENT '最后登录时间'
+);
+
+INSERT INTO admin_user(admin_name,admin_pass)VALUES('leoliu',MD5('123'));
+
+INSERT INTO admin_user(admin_name,admin_pass)VALUES('leoliu1',MD5('123'));
+
+INSERT INTO admin_user(admin_name,admin_pass)VALUES('leoliu2',MD5('123'));
