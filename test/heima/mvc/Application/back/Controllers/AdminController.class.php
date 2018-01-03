@@ -18,7 +18,7 @@ class AdminController extends BaseController{
             echo '登录成功。。。。';
             // header('');
         } else {
-            $this->gotoUrl('登录失败','?p=back?c=admin&a=login');
+            $this->gotoUrl('登录失败','?p=back&c=Admin&a=login');
         }
     }
 }
