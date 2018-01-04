@@ -15,8 +15,8 @@ class AdminController extends BaseController{
         $pwd = $_POST['password'];
         $result = $this->obj->checkAdmin($user,$pwd);
         if($result){
-            echo '登录成功。。。。';
-            // header('');
+            //登录成功。。。。
+            header('Location: index.php?p=back&c=Manage&a=index');
         } else {
             $this->gotoUrl('登录失败','?p=back&c=Admin&a=login');
         }
