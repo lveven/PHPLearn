@@ -7,4 +7,6 @@ define('ROOT',__DIR__);
 echo ".".PATH_SEPARATOR.ROOT."/lib".PATH_SEPARATOR.ROOT."/core".PATH_SEPARATOR.ROOT."/configs".PATH_SEPARATOR.get_include_path();
 echo '<br>';
 echo get_include_path();
+echo '<br>';
+
 ?>
