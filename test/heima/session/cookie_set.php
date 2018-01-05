@@ -20,5 +20,5 @@
 // $result = setcookie('secure_no','no',0,'','',false);//在https和http都允许传输
 // $result = setcookie('secure_yes','yes',0,'','',true);//在https和http都允许传输
 
-setcookie('httponly_no','no',0,'','',false,false);//去了http请求其他地方也可以使用
-setcookie('httponly_yes','yes',0,'','',false,true);//去了http请求其他地方也可以使用
+setcookie('httponly_no','no',0,'','',false,false);//除了http请求其他地方也可以使用
+setcookie('httponly_yes','yes',0,'','',false,true);//除了http请求其他地方不可以使用
