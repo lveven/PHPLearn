@@ -1,7 +1,7 @@
 <?php
 require_once './Framework/BaseModel.class.php';
 class AdminModel extends BaseModel{
-    function checkAdmin($user,$pwd){
+    public function checkAdmin($user,$pwd){
         $sql = "SELECT COUNT(*) AS c FROM admin_user where admin_name='$user' AND admin_pass=md5('$pwd');";
         $result = $this->db->getOneData($sql);
         if($result == 1){
@@ -12,5 +12,17 @@ class AdminModel extends BaseModel{
         } else {
             return false;
         }
+    }
+    /**
+     * 校验管理员是否合法
+     *
+     * @param string $user管理员名
+     * @param stirng $pwd密码 
+     * @return mixed array:合法，管理员信息数组；false:非法
+     */
+    public function checkAdminInfo($user,$pwd){
+        $sql = "SELECT * FROM admin_user where admin_name='$user' AND admin_pass=md5('$pwd')";
+        $result = $this->db->getOneRow($sql);
+        return $result;
     }
 }

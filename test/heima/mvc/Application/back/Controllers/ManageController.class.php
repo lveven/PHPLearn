@@ -9,6 +9,15 @@ class ManageController extends BaseController{
      * @return void
      */
     public function indexAction(){
-        echo '这里是后台首页！';
+        session_start();
+        if(!isset($_SESSION['admin_info'])){
+            header('location: index.php?p=back&c=Admin&a=login');
+            die();
+        } else {
+            $user = $_SESSION['admin_info'];
+            echo '这里是后台首页！';
+            echo '<hr>';
+            echo '你好:',$user['admin_name'];
+        }
     }
 }
