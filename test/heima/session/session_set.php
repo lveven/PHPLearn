@@ -1,8 +1,8 @@
 <?php
 ini_set('session.cookie_lifetime','3600');
-ini_set('session.cookie_domain','.php7.app');
+ini_set('session.cookie_domain','php7.app');
 //也可以用下面
-session_set_cookie_params(3600,'/','.php7.app',false,false);
+session_set_cookie_params(3600,'/','php7.app',false,false);
 
 session_start();
 //添加
