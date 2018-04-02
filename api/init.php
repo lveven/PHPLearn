@@ -1,4 +1,4 @@
 <?php
-require_once('./commen.php');
+require_once('./common.php');
 
 ?>
